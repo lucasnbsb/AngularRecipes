@@ -1,11 +1,12 @@
 import { HeroService } from './../hero.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-detail',
   templateUrl: './list-detail.component.html',
   styleUrls: ['./list-detail.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListDetailComponent implements OnInit, OnDestroy {
   constructor(private heroService: HeroService) {}
@@ -30,5 +31,5 @@ export class ListDetailComponent implements OnInit, OnDestroy {
   selectHero(id: number) {
     this.heroService.selectHero(id);
   }
-  
+
 }
