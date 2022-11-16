@@ -1,0 +1,97 @@
+{
+  "uuid": "5df4de16-bab0-4493-8b04-0c4bce290a8b",
+  "lastMigration": 24,
+  "name": "heroesApi",
+  "endpointPrefix": "api",
+  "latency": 50,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "cc0a2193-b39c-4727-976c-3e1d23fbfad3",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "heroes",
+      "responses": [
+        {
+          "uuid": "95228c5d-c0bc-4c04-9006-8cd81331c721",
+          "body": "{\n  \"heroes\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"id\": \"{{ faker 'datatype.number' min=0 max=100 }}\",\n        \"name\": \"{{ faker 'name.firstName' }}\",\n      },\n    {{/ repeat }}\n  ],\n  \"total\": \"{{queryParam 'total' '10'}}\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "16a8e823-4734-4fd3-a7e6-660f32d5255d",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "heroes/:id",
+      "responses": [
+        {
+          "uuid": "02985ea8-2ecf-4fa0-ad61-06da98ef1c60",
+          "body": "{\n  \"id\": \"{{ urlParam \"id\" }}\",\n  \"name\": \"{{ faker 'name.firstName' }}\",\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
