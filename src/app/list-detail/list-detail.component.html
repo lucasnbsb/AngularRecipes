@@ -1,18 +1,17 @@
-<div class="container">
-  <p>Doing list-detail with rxjs, here we fetch the details on hero select</p>
-  <div class="row">
-    <div class="col-4">
-      <div class="list-group">
-        <a
-          (click)="selectHero(hero.id)" [class.active]="hero.id === selectedHero"
-          *ngFor="let hero of heroList$ | async as heroes"
-          class="list-group-item list-group-item-action"
-          >{{ hero.id }} - {{ hero.name }}
-        </a>
-      </div>
+<p>Doing list-detail with rxjs, here we fetch the details on hero select</p>
+<div class="row">
+  <div class="col-4">
+    <div class="list-group">
+      <a
+        (click)="selectHero(hero.id)"
+        [class.active]="hero.id === selectedHero"
+        *ngFor="let hero of heroList$ | async as heroes"
+        class="list-group-item list-group-item-action"
+        >{{ hero.id }} - {{ hero.name }}
+      </a>
     </div>
-    <div class="col-8" *ngIf="details$ | async as details">
-      <h3>{{details.backstory}}</h3>
-    </div>
+  </div>
+  <div class="col-8" *ngIf="details$ | async as details">
+    <h3>{{ details.backstory }}</h3>
   </div>
 </div>

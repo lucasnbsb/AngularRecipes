@@ -19,13 +19,14 @@ export class HeroService {
   private selectedHeroSubject = new Subject<number>();
   selectedHeroId$ = this.selectedHeroSubject.asObservable();
 
-  heroes$ = this.http.get<Hero[]>(this.urlHero);
+  heroes$ = this.http.get<Hero[]>(this.urlHero, this.httpOptions);
   details$ = this.selectedHeroId$.pipe(
-    switchMap((id) => this.http.get<Details>(`${this.urlDetails}/${id}`))
+    switchMap((id) =>
+      this.http.get<Details>(`${this.urlDetails}/${id}`, this.httpOptions)
+    )
   );
 
   selectHero(id: number) {
     this.selectedHeroSubject.next(id);
   }
-
 }

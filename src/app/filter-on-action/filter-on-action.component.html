@@ -1,0 +1,30 @@
+<p>Here we have a list in memory alredy and we want to filter it on user input with a sensible debounce time</p>
+<p>So we combine the stream from the formControl valuechanges event with the one with the list of people</p>
+<br>
+
+<div class="mb-3">
+  <label for="" class="form-label">Name</label>
+  <input type="text" [formControl]="nameInput"
+    class="form-control" aria-describedby="name">
+  <small id="helpId" class="form-text text-muted">Filter the list of people saved by name</small>
+</div>
+
+<h2>People Saved by our heroes</h2>
+<div class="table-responsive">
+    <table class="table table-default">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Works At</th>
+                <th scope="col">Date of Saving</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="peopleSavedFiltered$ | async as people">
+            <tr *ngFor="let person of people">
+                <td scope="row">{{person.name}}</td>
+                <td>{{person.company}}</td>
+                <td>{{person.savedwhen | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
