@@ -26,6 +26,10 @@ export class HeroService {
     )
   );
 
+  getHeroById(id: number) {
+    return this.http.get(`${this.urlHero}/${id}`, this.httpOptions);
+  }
+
   selectHero(id: number) {
     this.selectedHeroSubject.next(id);
   }

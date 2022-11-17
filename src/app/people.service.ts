@@ -13,6 +13,9 @@ export class PeopleService {
 
   peoplesaved$ = this.http.get<Person[]>(`${this.urlPeople}`);
 
+  getPeopleSavedByHero(id: number) {
+    return this.http.get<Person[]>(`${this.urlPeople}?savedby=${id}`)
+  }
 
 
 }

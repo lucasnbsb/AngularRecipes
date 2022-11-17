@@ -1,0 +1,13 @@
+<p>Here we select a hero and prefetch the people he has saved before</p>
+<p>Navigating to the "detail" page.</p>
+div class="row">
+<div class="col-4">
+  <div class="list-group">
+    <a
+      *ngFor="let hero of heroList$ | async as heroes"
+      [routerLink]="'/prefetchdata/' +hero.id" [state]="hero"
+      class="list-group-item list-group-item-action"
+      >{{ hero.id }} - {{ hero.name }}
+    </a>
+  </div>
+</div>

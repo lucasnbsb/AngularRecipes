@@ -1,0 +1,40 @@
+<p>
+  We only see this page once the data is loaded into the router by the resolver.
+</p>
+<p>
+  Additionaly, the hero object gets sent into the router by the list component
+</p>
+<p>
+  But if you just type a url that data is not in the router, so the detail component fetches it
+</p>
+<p>
+  And fills in the information to build the page, either that or it just sends
+  you back if the url is bad
+</p>
+<div class="d-grid gap-2">
+  <button class="btn btn-primary" routerLink="/prefetchdata" type="button">
+    back to the list
+  </button>
+</div>
+
+<div *ngIf="selectedHero?.name">
+  <h2>People saved by {{ selectedHero!.name }}</h2>
+  <div class="table-responsive">
+    <table class="table table-default">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Works At</th>
+          <th scope="col">Date of Saving</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="savedPeople$ | async as savedPeople">
+        <tr *ngFor="let person of savedPeople">
+          <td scope="row">{{ person.name }}</td>
+          <td>{{ person.company }}</td>
+          <td>{{ person.savedwhen | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
